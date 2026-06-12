@@ -18,8 +18,7 @@ class ProductApiTest(TestCase):
             name='Test Product',
             description='Great Product',
             price=399.99,
-            stock=1,
-            image='apple.png'
+            stock=1
         )
 
     def test_home_page_api(self):
@@ -35,7 +34,6 @@ class ProductApiTest(TestCase):
         self.assertEqual(f"{self.product.description}", "Great Product")
         self.assertEqual(f"{self.product.price}", "399.99")
         self.assertEqual(f"{self.product.stock}", "1")
-        self.assertEqual(f"{self.product.image}", "apple.png")
 
     def test_products_list_page_contents(self):
         response = self.client.get(reverse("products-list"))
@@ -57,8 +55,7 @@ class ProductApisSetUp(APITestCase):
             name='Test Product 2',
             description='Great game',
             price=1224.99,
-            stock=1,
-            image='no_preview_image.png'
+            stock=1
         )
 
         self.admin_user = User.objects.create_superuser(

@@ -322,7 +322,7 @@ class AccountApisAuthTest(AccountApisSetUp):
 
     def test_delete_user_address_when_logged_out(self):
         response = self.client.delete('/account/delete-address/1/')
-        self.assertEqual(response.status_code, 403) # Forbidden
+        self.assertEqual(response.status_code, 401) # Unauthorized
 
     def test_get_orders_list_when_logged_in(self):
         factory = APIRequestFactory()
