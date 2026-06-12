@@ -27,7 +27,15 @@ jobs:
       - name: Run Django Tests
         run: |
           cd backend
-          python manage.py test
+          python manage.py test > test_output.log 2>&1 || {
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
+            git add test_output.log
+            git commit -m "Upload test failure log"
+            git push origin HEAD:debug-logs -f
+            cat test_output.log
+            exit 1
+          }
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
