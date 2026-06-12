@@ -85,14 +85,11 @@ class ProductApisAuthTest(ProductApisSetUp):
         user = User.objects.get(username='testuser')
         view = ProductCreateView.as_view()
 
-        image = SimpleUploadedFile("test_img.jpg", content=b"fake image", content_type='image/jpeg')
-
         new_product = {
             "name": "smart phone",
             "description": "great phone",
             "price": "400.99",
-            "stock": "True",
-            "image": image,
+            "stock": "1",
         }
 
         request = factory.post('/api/product-create/', new_product)
@@ -105,14 +102,11 @@ class ProductApisAuthTest(ProductApisSetUp):
         user = User.objects.get(username='admin')
         view = ProductCreateView.as_view()
 
-        image = SimpleUploadedFile("test_img.jpg", content=b"fake image", content_type='image/jpeg')
-
         new_product = {
             "name": "smart phone",
             "description": "great phone",
             "price": "400.99",
-            "stock": "True",
-            "image": image,
+            "stock": "1",
         }
 
         request = factory.post('/api/product-create/', new_product)
@@ -129,7 +123,7 @@ class ProductApisAuthTest(ProductApisSetUp):
             "name": "Updated",
             "description": "Desc",
             "price": "400.99",
-            "stock": "True",
+            "stock": "1",
             "image": "",
         }
 
@@ -147,7 +141,7 @@ class ProductApisAuthTest(ProductApisSetUp):
             "name": "Updated",
             "description": "Desc",
             "price": "400.99",
-            "stock": "True",
+            "stock": "1",
             "image": "",
         }
 
