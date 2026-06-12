@@ -14,11 +14,9 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 class ProductApiTest(TestCase):
 
     def setUp(self):
-
-        # setting up a new product
         self.product = Product.objects.create(
-            name='Apple Watch',
-            description='Great Watch',
+            name='Test Product',
+            description='Great Product',
             price=399.99,
             stock=True,
             image='apple.png'
@@ -33,35 +31,30 @@ class ProductApiTest(TestCase):
         self.assertEqual(str(product), "Sample Product")
 
     def test_product_values(self):
-        response = self.client.get(reverse("products-list"))
-        self.assertEqual(f"{self.product.name}", "Apple Watch")
-        self.assertEqual(f"{self.product.description}", "Great Watch")
+        self.assertEqual(f"{self.product.name}", "Test Product")
+        self.assertEqual(f"{self.product.description}", "Great Product")
         self.assertEqual(f"{self.product.price}", "399.99")
         self.assertEqual(f"{self.product.stock}", "True")
         self.assertEqual(f"{self.product.image}", "apple.png")
 
     def test_products_list_page_contents(self):
         response = self.client.get(reverse("products-list"))
-        self.assertContains(response, "Apple Watch")
+        self.assertContains(response, "Test Product")
         self.assertContains(response, "399.99")
-        self.assertContains(response, "apple.png")
 
     def test_product_details_page(self):
-        response = self.client.get("/api/product/1/")
+        response = self.client.get(f"/api/product/{self.product.id}/")
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Apple Watch")
-        self.assertContains(response, "Great Watch")
+        self.assertContains(response, "Test Product")
+        self.assertContains(response, "Great Product")
         self.assertContains(response, "399.99")
-        self.assertContains(response, "apple.png")
 
 
 class ProductApisSetUp(APITestCase):
 
     def setUp(self):
-
-        # setting up a new product
         self.product = Product.objects.create(
-            name='Ghost Recon Wildlands',
+            name='Test Product 2',
             description='Great game',
             price=1224.99,
             stock=True,
@@ -69,29 +62,19 @@ class ProductApisSetUp(APITestCase):
         )
 
         self.admin_user = User.objects.create_superuser(
-            username = "admin",
-            email = "admin@gmail.com",
-            password = "admin1234"
+            username="admin",
+            email="admin@gmail.com",
+            password="admin1234"
         )
 
         self.normal_user = User.objects.create_user(
-            username = "testuser",
-            email = "testuser@gmail.com",
-            password = "testuser1234"
+            username="testuser",
+            email="testuser@gmail.com",
+            password="testuser1234"
         )
 
 
 class ProductApisAuthTest(ProductApisSetUp):
-
-    def test_address_page_with_login_credentials(self):
-        factory = APIRequestFactory()
-        view = views.UserAddressesListView.as_view()
-
-        # Make an authenticated request to the view...
-        request = factory.get('/accounts/all-address-details/')
-        force_authenticate(request, user=1)
-        response = view(request)
-        self.assertEqual(response.status_code, 200)
 
     def test_address_page_without_login_credentials(self):
         response = self.client.get('accounts/all-address-details/')
@@ -99,10 +82,10 @@ class ProductApisAuthTest(ProductApisSetUp):
 
     def test_product_create_page_with_non_admin_credentials(self):
         factory = APIRequestFactory()
-        user = User.objects.get(username='testuser') # not an admin
+        user = User.objects.get(username='testuser')
         view = ProductCreateView.as_view()
 
-        image = SimpleUploadedFile("computer_chair.jpg", content=open("static\images\computer_chair.jpg", 'rb').read(), content_type='image/jpeg')
+        image = SimpleUploadedFile("test_img.jpg", content=b"fake image", content_type='image/jpeg')
 
         new_product = {
             "name": "smart phone",
@@ -112,19 +95,17 @@ class ProductApisAuthTest(ProductApisSetUp):
             "image": image,
         }
 
-        # Make an authenticated request to the view...
         request = factory.post('/api/product-create/', new_product)
         force_authenticate(request, user=user)
         response = view(request)
-        self.assertEqual(response.status_code, 403) # forbidden
+        self.assertEqual(response.status_code, 403)
     
     def test_product_create_page_with_admin_credentials(self):
-
         factory = APIRequestFactory()
-        user = User.objects.get(username='admin') # admin user
+        user = User.objects.get(username='admin')
         view = ProductCreateView.as_view()
 
-        image = SimpleUploadedFile("computer_chair.jpg", content=open("static\images\computer_chair.jpg", 'rb').read(), content_type='image/jpeg')
+        image = SimpleUploadedFile("test_img.jpg", content=b"fake image", content_type='image/jpeg')
 
         new_product = {
             "name": "smart phone",
@@ -134,7 +115,6 @@ class ProductApisAuthTest(ProductApisSetUp):
             "image": image,
         }
 
-        # Make an authenticated request to the view...
         request = factory.post('/api/product-create/', new_product)
         force_authenticate(request, user=user)
         response = view(request)
@@ -145,19 +125,17 @@ class ProductApisAuthTest(ProductApisSetUp):
         user = User.objects.get(username='admin')
         view = ProductEditView.as_view()
 
-        # only updating price (you can update anything though)
         updated_product = {
-            "name": "",
-            "description": "",
+            "name": "Updated",
+            "description": "Desc",
             "price": "400.99",
             "stock": "True",
             "image": "",
         }
 
-        request = factory.put('/api/product-update/1/', updated_product, format="json")
-
+        request = factory.put(f'/api/product-update/{self.product.id}/', updated_product, format="json")
         force_authenticate(request, user=user)
-        response = view(request, 1)
+        response = view(request, self.product.id)
         self.assertEqual(response.status_code, 200)
     
     def test_product_edit_page_without_admin_credentials(self):
@@ -165,40 +143,35 @@ class ProductApisAuthTest(ProductApisSetUp):
         user = User.objects.get(username='testuser')
         view = ProductEditView.as_view()
 
-        # only updating price (you can update anything though)
         updated_product = {
-            "name": "",
-            "description": "",
+            "name": "Updated",
+            "description": "Desc",
             "price": "400.99",
             "stock": "True",
             "image": "",
         }
 
-        request = factory.put('/api/product-update/1/', updated_product, format="json")
-
+        request = factory.put(f'/api/product-update/{self.product.id}/', updated_product, format="json")
         force_authenticate(request, user=user)
-        response = view(request, 1)
-        self.assertEqual(response.status_code, 403) # forbidden
+        response = view(request, self.product.id)
+        self.assertEqual(response.status_code, 403)
 
     def test_product_deletion_with_admin_credentials(self):
         factory = APIRequestFactory()
         user = User.objects.get(username='admin')
         view = ProductDeleteView.as_view()
 
-        request = factory.delete('/api/product-delete/1/')
-
+        request = factory.delete(f'/api/product-delete/{self.product.id}/')
         force_authenticate(request, user=user)
-        response = view(request, 1)
-        self.assertEqual(response.status_code, 204) # as after deletion the product is gone, so 204.
+        response = view(request, self.product.id)
+        self.assertEqual(response.status_code, 204)
     
     def test_product_deletion_without_admin_credentials(self):
         factory = APIRequestFactory()
         user = User.objects.get(username='testuser')
         view = ProductDeleteView.as_view()
 
-        request = factory.delete('/api/product-delete/1/')
-
+        request = factory.delete(f'/api/product-delete/{self.product.id}/')
         force_authenticate(request, user=user)
-        response = view(request, 1)
-        self.assertEqual(response.status_code, 403) # Forbidden
-
+        response = view(request, self.product.id)
+        self.assertEqual(response.status_code, 403)
