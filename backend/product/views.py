@@ -85,26 +85,7 @@ class ProductCreateView(APIView):
 
     def post(self, request):
         user = request.user
-        data = request.data
-
-        product = {
-            "name": data.get("name", ""),
-            "category": data.get("category", ""),
-            "brand": data.get("brand", ""),
-            "description": data.get("description", ""),
-            "price": data.get("price", "0.00"),
-            "old_price": data.get("old_price", None),
-            "stock": data.get("stock", 0),
-            "min_order_quantity": data.get("min_order_quantity", 1),
-            "color": data.get("color", ""),
-            "size": data.get("size", ""),
-            "season": data.get("season", ""),
-            "material": data.get("material", ""),
-            "country_of_origin": data.get("country_of_origin", ""),
-            "image": data.get("image", None),
-        }
-
-        serializer = ProductSerializer(data=product, many=False)
+        serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -131,27 +112,8 @@ class ProductEditView(APIView):
 
     def put(self, request, pk):
         try:
-            data = request.data
             product = Product.objects.get(id=pk)
-            
-            updated_product = {
-                "name": data.get("name", product.name),
-                "category": data.get("category", product.category),
-                "brand": data.get("brand", product.brand),
-                "description": data.get("description", product.description),
-                "price": data.get("price", product.price),
-                "old_price": data.get("old_price", product.old_price),
-                "stock": data.get("stock", product.stock),
-                "min_order_quantity": data.get("min_order_quantity", product.min_order_quantity),
-                "color": data.get("color", product.color),
-                "size": data.get("size", product.size),
-                "season": data.get("season", product.season),
-                "material": data.get("material", product.material),
-                "country_of_origin": data.get("country_of_origin", product.country_of_origin),
-                "image": data.get("image", product.image),
-            }
-
-            serializer = ProductSerializer(product, data=updated_product)
+            serializer = ProductSerializer(product, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
