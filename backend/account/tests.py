@@ -224,7 +224,7 @@ class AccountApisAuthTest(AccountApisSetUp):
 
         user_address = {
             "name": "testuser",
-            "user": user,
+            "user": user.id,
             "phone_number": "9123456789",
             "pin_code": "110000",
             "house_no": "somewhere on earth",
@@ -243,7 +243,7 @@ class AccountApisAuthTest(AccountApisSetUp):
 
         user_address = {
             "name": "testuser",
-            "user": user,
+            "user": user.id,
             "phone_number": "9123456789",
             "pin_code": "110000",
             "house_no": "somewhere on earth",
@@ -263,7 +263,7 @@ class AccountApisAuthTest(AccountApisSetUp):
         # updating the dummy address here
         updated_address = {
             "name": "",
-            "user": user,
+            "user": user.id,
             "phone_number": "",
             "pin_code": "111111",
             "house_no": "",
@@ -284,7 +284,7 @@ class AccountApisAuthTest(AccountApisSetUp):
         # updating the dummy address here
         updated_address = {
             "name": "",
-            "user": user,
+            "user": user.id,
             "phone_number": "",
             "pin_code": "111111",
             "house_no": "",
