@@ -77,7 +77,7 @@ class ProductApisSetUp(APITestCase):
 class ProductApisAuthTest(ProductApisSetUp):
 
     def test_address_page_without_login_credentials(self):
-        response = self.client.get('accounts/all-address-details/')
+        response = self.client.get('/accounts/all-address-details/')
         self.assertEqual(response.status_code, 404)
 
     def test_product_create_page_with_non_admin_credentials(self):
@@ -92,7 +92,7 @@ class ProductApisAuthTest(ProductApisSetUp):
             "stock": "1",
         }
 
-        request = factory.post('/api/product-create/', new_product)
+        request = factory.post('/api/product-create/', new_product, format="json")
         force_authenticate(request, user=user)
         response = view(request)
         self.assertEqual(response.status_code, 403)
@@ -109,7 +109,7 @@ class ProductApisAuthTest(ProductApisSetUp):
             "stock": "1",
         }
 
-        request = factory.post('/api/product-create/', new_product)
+        request = factory.post('/api/product-create/', new_product, format="json")
         force_authenticate(request, user=user)
         response = view(request)
         self.assertEqual(response.status_code, 200)
@@ -124,7 +124,6 @@ class ProductApisAuthTest(ProductApisSetUp):
             "description": "Desc",
             "price": "400.99",
             "stock": "1",
-            "image": "",
         }
 
         request = factory.put(f'/api/product-update/{self.product.id}/', updated_product, format="json")
@@ -142,7 +141,6 @@ class ProductApisAuthTest(ProductApisSetUp):
             "description": "Desc",
             "price": "400.99",
             "stock": "1",
-            "image": "",
         }
 
         request = factory.put(f'/api/product-update/{self.product.id}/', updated_product, format="json")
