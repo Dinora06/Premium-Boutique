@@ -26,28 +26,30 @@ class ProductView(APIView):
         country = request.query_params.get('country')
         category = request.query_params.get('category')
 
-        filters = {'name__icontains': query}
+        from django.db.models import Q
+
+        products = Product.objects.filter(name__icontains=query)
         
         if min_price:
-            filters['price__gte'] = min_price
+            products = products.filter(price__gte=min_price)
         if max_price:
-            filters['price__lte'] = max_price
+            products = products.filter(price__lte=max_price)
         if color:
-            filters['color__iexact'] = color
+            products = products.filter(Q(color__iexact=color) | Q(color__isnull=True) | Q(color__exact=''))
         if size:
-            filters['size__iexact'] = size
+            products = products.filter(Q(size__iexact=size) | Q(size__isnull=True) | Q(size__exact=''))
         if season:
-            filters['season__iexact'] = season
+            products = products.filter(Q(season__iexact=season) | Q(season__isnull=True) | Q(season__exact=''))
         if material:
-            filters['material__iexact'] = material
+            products = products.filter(Q(material__iexact=material) | Q(material__isnull=True) | Q(material__exact=''))
         if brand:
-            filters['brand__iexact'] = brand
+            products = products.filter(Q(brand__iexact=brand) | Q(brand__isnull=True) | Q(brand__exact=''))
         if country:
-            filters['country_of_origin__iexact'] = country
+            products = products.filter(Q(country_of_origin__iexact=country) | Q(country_of_origin__isnull=True) | Q(country_of_origin__exact=''))
         if category:
-            filters['category__iexact'] = category
+            products = products.filter(Q(category__iexact=category) | Q(category__isnull=True) | Q(category__exact=''))
             
-        products = Product.objects.filter(**filters).order_by('-id')
+        products = products.order_by('-id')
         
         page = request.query_params.get('page')
         paginator = Paginator(products, 8) # 8 products per page
