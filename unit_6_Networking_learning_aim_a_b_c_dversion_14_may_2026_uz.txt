@@ -1,0 +1,78 @@
+BTEC topshirig'i haqida qisqacha ma'lumot
+BTEC topshirig'i haqida qisqacha ma'lumot
+BTEC topshirig'i haqida qisqacha ma'lumot
+Malaka | Malaka
+Birlik raqami va nomi | Birlik raqami va nomi | 6-qism: Bulutda tarmoq
+O'rganish maqsadi(lar)i(Faqat NQF uchun) | O'rganish maqsadi(lar)i(Faqat NQF uchun) | A:Muloqotni qo'llab-quvvatlash uchun bulutli infratuzilmada qo'llaniladigan umumiy tarmoq tamoyillarini ko'rib chiqing
+B:Bulutli infratuzilmada tarmoq texnologiyalarining ishlashini tushuntiring
+Topshiriq sarlavhasi | Topshiriq sarlavhasi | CRM, WPS va ERP tizimlari uchun bulutli platforma
+Baholovchi | Baholovchi
+Berilgan sanasi | Berilgan sanasi
+Belgilangan muddatda topshiring | Belgilangan muddatda topshiring
+Kasbiy stsenariy yoki kontekst | Kasbiy stsenariy yoki kontekst | Siz bulutli tarmoq texnologiyalari yo'nalishida amaliyot o'tayotgan yosh tarmoq muhandisi sifatida kompaniya safiga qo'shildingiz. Kompaniya tayyor kiyim-kechak mahsulotlarini ulgurji tartibda yetkazib berish faoliyati bilan shug'ullanib kelmoqda. Hozirgi kunda mavjud lokal tarmoq va IT infratuzilmasi biznesning o'sib borayotgan talablariga to'liq javob bera olmayapti. Shu sababli, rahbariyat ERP, CRM va WMS kabi muhim biznes tizimlarni bulut platformasiga migratsiya qilish va ularni yagona xavfsiz tarmoq orqali birlashtirish bo'yicha sizning tahliliy hisobotingizga muhtoj.
+Vazifa 1 | Vazifa 1 | Texnik rahbaringiz quyidagi vazifalarni chuqur o'rganib chiqishni va batafsil hisobot shaklida taqdim etishni topshirdi:
+Bulutga asoslangan masofaviy xizmatlar va tarmoq ulanishlari kompaniyaning kundalik operatsiyalariga, xodimlar samaradorligiga hamda mijozlarga ko'rsatiladigan xizmat sifatiga qanday ta'sir qilishini baholang
+Bulutli tarmoqning tayanch tushunchalari, arxitekturasi va asosiy komponentlarini (VPC, subnet, routing table, gateway, firewall, NAT va boshqalar) yoritib bering
+Bulut xizmatlari modellari (IaaS, PaaS, SaaS) hamda tarmoq darajasidagi xizmatlar (Load Balancer, VPN, CDN) o'rtasidagi farqlarni qiyosiy tahlil qiling
+Bulutli tarmoq muhitiga ko'chish kompaniyaning xarajatlari, xavfsizligi, kengayuvchanligi va uzluksiz ishlash ko'rsatkichlariga qanday ijobiy hissa qo'shishini dalillar bilan asoslang
+Bulut muhitida dinamik veb-saytni joylashtiring hamda uni tegishli tarmoq xizmatlari yordamida sozlab ishga tushiring
+CI/CD avtomatlashtirish pipelinini amaliy qo'llab ko'ring va yuqori yuklama vaziyatida ilovaning auto-scaling hamda load balancing mexanizmlari orqali qo'shimcha resurslarni qanday taqsimlab olishini namoyish eting
+Sizning ushbu tadqiqotingiz natijalari asosida kompaniya rahbariyati biznes tizimlarini bulutli tarmoq muhitiga ko'chirish yuzasidan yakuniy strategik qarorga keladi.
+Kerakli dalillar ro'yxati | Kerakli dalillar ro'yxati
+Ushbu vazifani qamrab oladigan mezonlar: | Ushbu vazifani qamrab oladigan mezonlar: | Ushbu vazifani qamrab oladigan mezonlar:
+Birlik/Kriteriyalar ma'lumotnomasi | Mezonlarga erishish uchun siz quyidagilarga qodir ekanligingizni ko'rsatishingiz kerak: | Mezonlarga erishish uchun siz quyidagilarga qodir ekanligingizni ko'rsatishingiz kerak:
+A.P1 | Bulut ichidagi turli tarmoq arxitekturalari va standartlarining afzalliklari va cheklovlarini muhokama qiling. | Bulut ichidagi turli tarmoq arxitekturalari va standartlarining afzalliklari va cheklovlarini muhokama qiling.
+A.M1 | Umumiy tarmoq standartlari va ular bulutli hisoblashni qanday osonlashtirishini solishtiring. | Umumiy tarmoq standartlari va ular bulutli hisoblashni qanday osonlashtirishini solishtiring.
+A.D1 | Bulutli muhitni yaratish tarmoqni amalga oshirish va umumiy ishlashga qanday ta'sir qilishini ko'rib chiqing. | Bulutli muhitni yaratish tarmoqni amalga oshirish va umumiy ishlashga qanday ta'sir qilishini ko'rib chiqing.
+A.P2 | Bulut ichida tarmoq aloqasi qanday ishlashini tasvirlab bering. | Bulut ichida tarmoq aloqasi qanday ishlashini tasvirlab bering.
+B.M2 | Bulutli operatsion tizimni masofaviy optimallashtirishning samaradorlikka ta'sirini o'rganing.
+B.P3 | Masofaviy operatsion tizim xizmatlari bulut ichida qanday joylashtirilishini tushuntiring.
+B.P4 | Masofaviy mijozlar bulut xizmatlari bilan qanday aloqada bo'lishini tushuntiring.
+Ushbu topshiriqda sizga yordam beradigan ma'lumot manbalari | DUTT, D. (2019) Cloud Native Data-Center Networking: Arxitektura, Protokollar va Asboblar. Sebastopol: O'Reilly KUROSE, J., ROSS, K. ​​(2016) Kompyuter tarmog'i: yuqoridan pastga yondashuv. Harlow, Pearson STALLINGS, W. (2015) Zamonaviy tarmoq asoslari: SDN, NFV, QoE, IoT va bulut. Boston: Addison Uesli
+Ushbu topshiriq bayoniga ilova qilingan boshqa baholash materiallari
+Malaka | Malaka
+Birlik raqami va nomi | Birlik raqami va nomi | 6-qism: Bulutda tarmoq
+O'rganish maqsadi(lar)i(Faqat NQF uchun) | O'rganish maqsadi(lar)i(Faqat NQF uchun) | C:Biznesdan foydalanish uchun bulutga asoslangan tizim uchun tarmoq yechimini loyihalash
+Topshiriq sarlavhasi | Topshiriq sarlavhasi | Bulutda tarmoq bilan ishlash
+Baholovchi | Baholovchi
+Berilgan sanasi | Berilgan sanasi
+Belgilangan muddatda topshiring | Belgilangan muddatda topshiring
+Kasbiy stsenariy yoki kontekst | Kasbiy stsenariy yoki kontekst
+Vazifa 1 | Vazifa 1 | Kiyim-kechak ulgurji kompaniyasining ERP, CRM va WMS tizimlarini bulut platformasida ishonchli va xavfsiz tarzda birlashtirish maqsadida quyidagi tarmoq va xavfsizlik tamoyillarini chuqur o'rganib chiqing:
+Kerakli dalillar ro'yxati | Kerakli dalillar ro'yxati | VPC (Virtual Private Cloud) — kompaniyaning ichki biznes tizimlarini bulutda boshqa foydalanuvchilardan ajratilgan holda joylashtiruvchi virtual xususiy tarmoq
+Subnet (Public va Private) — VPC ichidagi resurslarni vazifasiga ko'ra (ochiq va yopiq) bo'laklarga ajratish
+VPN (Virtual Private Network) — bosh ofis, mintaqaviy omborlar va bulut infratuzilmasi orasida shifrlangan tunnel orqali xavfsiz ma'lumot uzatish texnologiyasi
+Load Balancing (yuk muvozanatlash) — ERP, CRM va WMS tizimlariga yo'naltirilgan foydalanuvchi so'rovlarini bir nechta server o'rtasida bir tekis taqsimlash orqali ish unumdorligini oshiruvchi xizmat
+NAT Gateway va Internet Gateway — bulutdagi xususiy resurslarning internetga chiqishi va tashqi so'rovlarni qabul qilishini boshqaruvchi tarmoq tugunlari
+DNS (Domain Name System) — biznes tizimlarining domen nomlari orqali topilishi va marshrutlanishini ta'minlovchi xizmat
+Ushbu vazifani qamrab oladigan mezonlar: | Ushbu vazifani qamrab oladigan mezonlar: | Ushbu vazifani qamrab oladigan mezonlar:
+Birlik/Kriteriyalar ma'lumotnomasi | Mezonlarga erishish uchun siz quyidagilarga qodir ekanligingizni ko'rsatishingiz kerak: | Mezonlarga erishish uchun siz quyidagilarga qodir ekanligingizni ko'rsatishingiz kerak:
+C.M3 | Bulutga asoslangan tarmoqni unumdorligi va kengaytirilishi uchun sinab ko'ring. | Bulutga asoslangan tarmoqni unumdorligi va kengaytirilishi uchun sinab ko'ring.
+C.P5 | Muayyan biznesdan foydalanish uchun bulutga asoslangan tizim uchun tarmoq yechimini loyihalash. | Muayyan biznesdan foydalanish uchun bulutga asoslangan tizim uchun tarmoq yechimini loyihalash.
+C.D2 | Sinovdan olingan samaradorlik va kengayish natijalari asosida dizayningiz samaradorligini asoslang. | Sinovdan olingan samaradorlik va kengayish natijalari asosida dizayningiz samaradorligini asoslang.
+C.P6 | Bulutli tizim uchun mo'ljallangan tarmoq yechimini amalga oshiring. | Bulutli tizim uchun mo'ljallangan tarmoq yechimini amalga oshiring.
+Ushbu topshiriqda sizga yordam beradigan ma'lumot manbalari | Ushbu topshiriqda sizga yordam beradigan ma'lumot manbalari | DUTT, D. (2019) Cloud Native Data-Center Networking: Arxitektura, Protokollar va Asboblar. Sebastopol: O'Reilly KUROSE, J., ROSS, K. ​​(2016) Kompyuter tarmog'i: yuqoridan pastga yondashuv. Harlow, Pearson STALLINGS, W. (2015) Zamonaviy tarmoq asoslari: SDN, NFV, QoE, IoT va bulut. Boston: Addison Uesli
+Ushbu topshiriq bayoniga ilova qilingan boshqa baholash materiallari | Ushbu topshiriq bayoniga ilova qilingan boshqa baholash materiallari | masalan, ish varaqalari, xavflarni baholash, amaliy tadqiqotlar
+Malaka | Malaka
+Birlik raqami va nomi | Birlik raqami va nomi | 6-qism: Bulutda tarmoq
+O'rganish maqsadi(lar)i(Faqat NQF uchun) | O'rganish maqsadi(lar)i(Faqat NQF uchun) | D:Muayyan biznesdan foydalanish holati uchun ishlab chiqilgan bulutga asoslangan tizim uchun tarmoq unumdorligini oshirish.
+Topshiriq sarlavhasi | Topshiriq sarlavhasi
+Baholovchi | Baholovchi
+Berilgan sanasi | Berilgan sanasi
+Belgilangan muddatda topshiring | Belgilangan muddatda topshiring
+Kasbiy stsenariy yoki kontekst | Kasbiy stsenariy yoki kontekst
+Vazifa 1 | Vazifa 1 | Quyidagilar o‘rtasidagi farqlarni tushuntiring:
+Kerakli dalillar ro'yxati | Kerakli dalillar ro'yxati | Masofaviy bulut xizmatlaridan foydalanishning kompaniya kundalik operatsiyalari (omborni boshqarish, buyurtmalarni qayta ishlash, mijozlar bilan ishlash) va mijozlar tajribasiga ta'siri
+On-premises (lokal serverlardagi mahalliy tizim), In-cloud (to'liq bulutdagi tizim) va Hybrid (aralash) modellar — kompaniyaning ERP, CRM va WMS tizimlarini joylashtirishda qaysi yondashuv qulayligini qiyoslang
+IaaS (Infrastructure as a Service), PaaS (Platform as a Service) va SaaS (Software as a Service) — kompaniyaning bulutdan qaysi darajadagi xizmatni ijaraga olishi uchun mos modelni tanlash
+Public Cloud, Private Cloud va Multi-Cloud yondashuvlari — biznes tizimlarining maxfiylik darajasi va xarajat samaradorligiga qarab tegishli bulut turini aniqlash
+Site-to-Site VPN va Client-to-Site VPN yechimlari — bosh ofis bilan omborlarni bog'lash hamda masofadan ishlovchi xodimlarni bulutga ulash uchun mos VPN turini tanlash
+Virtualizatsiya (Virtual Machines) va Konteynerizatsiya (Docker, Kubernetes) — kompaniya ilovalarini bulutda joylashtirishda resurslardan samarali foydalanish texnologiyalarini qiyoslash
+Ushbu vazifani qamrab oladigan mezonlar: | Ushbu vazifani qamrab oladigan mezonlar: | Ushbu vazifani qamrab oladigan mezonlar:
+Birlik/Kriteriyalar ma'lumotnomasi | Mezonlarga erishish uchun siz quyidagilarga qodir ekanligingizni ko'rsatishingiz kerak: | Mezonlarga erishish uchun siz quyidagilarga qodir ekanligingizni ko'rsatishingiz kerak:
+D.D3 | Olingan tarmoq yaxshilanishlarini asl tarmoq dizayniga nisbatan asoslang. | Olingan tarmoq yaxshilanishlarini asl tarmoq dizayniga nisbatan asoslang.
+D.M4 | Ishlash va miqyosni yanada yaxshilash uchun tarmoqni yaxshilashni sinab ko'ring. | Ishlash va miqyosni yanada yaxshilash uchun tarmoqni yaxshilashni sinab ko'ring.
+D.P7 | Bulutli sinov natijalari asosida tarmoqni yaxshilashni tavsiya eting. | Bulutli sinov natijalari asosida tarmoqni yaxshilashni tavsiya eting.
+D.P8 | Bulutli tizim uchun tarmoq yaxshilanishlarini amalga oshiring. | Bulutli tizim uchun tarmoq yaxshilanishlarini amalga oshiring.
+Ushbu topshiriqda sizga yordam beradigan ma'lumot manbalari | Ushbu topshiriqda sizga yordam beradigan ma'lumot manbalari | DUTT, D. (2019) Cloud Native Data-Center Networking: Arxitektura, Protokollar va Asboblar. Sebastopol: O'Reilly KUROSE, J., ROSS, K. ​​(2016) Kompyuter tarmog'i: yuqoridan pastga yondashuv. Harlow, Pearson STALLINGS, W. (2015) Zamonaviy tarmoq asoslari: SDN, NFV, QoE, IoT va bulut. Boston: Addison Uesli
+Ushbu topshiriq bayoniga ilova qilingan boshqa baholash materiallari | Ushbu topshiriq bayoniga ilova qilingan boshqa baholash materiallari

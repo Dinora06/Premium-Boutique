@@ -1,0 +1,10 @@
+node_modules/
+backend/staticfiles/
+frontend/build/
+db.sqlite3
+__pycache__/
+*.pyc
+.env
+deploy.tar.gz
+ecommerce-key.pem
+backend/static/images/

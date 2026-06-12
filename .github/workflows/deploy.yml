@@ -1,0 +1,66 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow on push to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Build Frontend
+      run: |
+        cd frontend
+        npm install
+        npm run build
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
+
+    - name: Create deployment archive
+      run: |
+        tar --exclude="db.sqlite3" --exclude=".git" --exclude="node_modules" -czf deploy.tar.gz backend docker-compose.yml nginx.conf frontend/build
+
+    - name: Copy archive to EC2
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        source: "deploy.tar.gz"
+        target: "/home/ubuntu/app"
+
+    - name: Execute deployment script on EC2
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd /home/ubuntu/app
+          tar -xzf deploy.tar.gz
+          
+          # Install Docker if missing
+          if ! command -v docker &> /dev/null; then curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && sudo usermod -aG docker ubuntu; fi
+          if ! docker compose version &> /dev/null; then sudo apt-get update && sudo apt-get install -y docker-compose-plugin; fi
+          
+          # Restart Docker containers
+          sudo docker compose down
+          sudo docker compose up --build -d
+          
+          # Run Django commands
+          sudo docker compose exec -T backend python manage.py makemigrations
+          sudo docker compose exec -T backend python manage.py migrate
+          sudo docker compose exec -T backend python manage.py collectstatic --noinput
+          
+          # Clean up archive
+          rm deploy.tar.gz
