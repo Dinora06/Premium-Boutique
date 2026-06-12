@@ -59,11 +59,11 @@ class AccountApisSetUp(APITestCase):
             ordered_item = "computer chair", 
             card_number = "4242424242424242", 
             address = "somewhere on earth", 
-            paid_status = "True", 
+            paid_status = True, 
             paid_at = timezone.now(),
             total_price = "5999.99", 
-            is_delivered = "False",
-            delivered_at = "Not Delivered", 
+            is_delivered = False,
+            delivered_at = None, 
             user = self.normal_user
         )
 
@@ -161,7 +161,7 @@ class AccountApisAuthTest(AccountApisSetUp):
         # only updating the username (you can update anything though)
         updates = {"username": "admin22", "email": "", "password": ""}
 
-        request = factory.put('/accounts/user_update/1/', updates)   
+        request = factory.put('/accounts/user_update/1/', updates, format="json")   
         force_authenticate(request, user=user)     
         update_user = User.objects.get(id='1')
         update_user.username = updates["username"]
@@ -174,7 +174,7 @@ class AccountApisAuthTest(AccountApisSetUp):
 
     def test_user_account_updation_when_logged_out(self):
         updates = {"username": "admin22", "email": "", "password": ""}
-        response = self.client.put('/accounts/user_update/1/', updates)
+        response = self.client.put('/accounts/user_update/1/', updates, content_type="application/json")
         self.assertEqual(response.status_code, 404)
 
     def test_user_account_deletion_with_wrong_password(self):
@@ -272,7 +272,7 @@ class AccountApisAuthTest(AccountApisSetUp):
             "state": "",
         }
 
-        request = factory.put('/account/update-address/1/', updated_address)
+        request = factory.put('/account/update-address/1/', updated_address, format="json")
 
         force_authenticate(request, user=user)
         response = view(request, 1)
@@ -293,7 +293,7 @@ class AccountApisAuthTest(AccountApisSetUp):
             "state": "",
         }
 
-        response = self.client.put('/account/update-address/1/', updated_address)
+        response = self.client.put('/account/update-address/1/', updated_address, content_type="application/json")
         self.assertEqual(response.status_code, 401) # Unauthorized
 
     def test_fetching_address_details_when_logged_in(self):
@@ -344,9 +344,9 @@ class AccountApisAuthTest(AccountApisSetUp):
         view = ChangeOrderStatus.as_view()
 
         request = factory.put('/account/change-order-status/1/', {
-            "is_delivered": "True",
-            "delivered_at": timezone.now()
-        })
+            "is_delivered": True,
+            "delivered_at": str(timezone.now())
+        }, format="json")
         force_authenticate(request, user=user)
         response = view(request, 1)
         self.assertEqual(response.status_code, 200)
@@ -357,18 +357,18 @@ class AccountApisAuthTest(AccountApisSetUp):
         view = ChangeOrderStatus.as_view()
 
         request = factory.put('/account/change-order-status/1/', {
-            "is_delivered": "True",
-            "delivered_at": timezone.now()
-        })
+            "is_delivered": True,
+            "delivered_at": str(timezone.now())
+        }, format="json")
         force_authenticate(request, user=user)
         response = view(request, 1)
         self.assertEqual(response.status_code, 403) # Forbidden
 
     def test_changing_of_order_status_when_logged_out(self):
         response = self.client.put('/account/change-order-status/1/', {
-            "is_delivered": "True",
-            "delivered_at": timezone.now()
-        })
+            "is_delivered": True,
+            "delivered_at": str(timezone.now())
+        }, content_type="application/json")
         self.assertEqual(response.status_code, 401) # Unauthorized
 
     def test_fetching_of_user_stripe_card_when_logged_in(self):
