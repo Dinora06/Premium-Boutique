@@ -44,7 +44,7 @@ function NavBar() {
                     <LinkContainer to="/">
                         <Navbar.Brand>
                             <span style={{ color: 'var(--primary)', fontSize: '1.5rem' }}><i className="fas fa-shopping-bag"></i></span>
-                            <span className="ml-2 font-weight-bolder" style={{fontSize: '1.2rem', color: '#333'}}>Premium Mall</span>
+                            <span className="ml-2 font-weight-bolder" style={{fontSize: '1.2rem', color: '#333'}}>Remodule</span>
                         </Navbar.Brand>
                     </LinkContainer>
 
